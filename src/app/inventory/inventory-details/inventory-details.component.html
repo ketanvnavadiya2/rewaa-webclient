@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="container">
+      <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+          <div class="blocks">
+              <button (click)="onBack()" type="button" mat-raised-button color="primary">
+                <mat-icon>keyboard_backspace</mat-icon>
+                Back
+              </button>
+          </div>
+    </div>
+  </div>
+  
+  <br>
+
+<div class="container">
+    <h1> {{this.product?.name}} </h1>
+    <h4> {{this.product?.description}} </h4>
+
+    <h3> $ {{this.product?.price}} </h3>
+
+    <img src={{this.product?.imageUrl}} />
+</div>
