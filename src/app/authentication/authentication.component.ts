@@ -13,13 +13,14 @@ export class AuthenticationComponent implements OnInit {
   isLoading = false;
   isError: string = null;
 
-  constructor(private authenticationService: AuthenticationService,
-              private router: Router
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
     ) { 
-
   }
 
   ngOnInit(): void {
+    this.authenticationService.autoLogin();
   }
 
   onSubmit(loginForm: NgForm) {
@@ -34,11 +35,13 @@ export class AuthenticationComponent implements OnInit {
     this.isLoading = true;
 
     this.authenticationService.login(email, password).subscribe( response => {
-      console.log("Response: ", response)
+      if(!response['success']) {
+        this.isError = response['message']
+      }
       this.isLoading = false;
       this.router.navigate(['/inventory']);
     }, error => {
-      console.log("Error: ",error)
+      console.log("Error: ", error)
       this.isLoading = false;
       this.isError = "An error occure"
     })

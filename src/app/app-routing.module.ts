@@ -11,8 +11,7 @@ import { InventoryListComponent } from './inventory/inventory-list/inventory-lis
 const routes: Routes = [
   {
     path: '',
-    component: InventoryComponent,
-    canActivate: [AuthenticationGuard],
+    component: AuthenticationComponent,
   },
   {
     path: 'inventory',

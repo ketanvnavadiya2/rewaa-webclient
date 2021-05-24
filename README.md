@@ -1,29 +1,35 @@
-# Webclient
+#  Inventory Management Service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+This is an inventory management project as a SPA (Single Page Application) based on Angular. it is client application.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To get & run this project in your local machine, run the following commands:
 
-## Code scaffolding
+```bash
+git clone https://github.com/ketanvnavadiya2/rewaa-webclient.git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+cd rewaa-webclient
 
-## Build
+npm install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ng serve
 
-## Running unit tests
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This will get a copy of the project installed locally. and ng serve will run the project in your machine
 
-## Running end-to-end tests
+```
+open the `http://localhost:4200` in your web browser to access the application
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+There should show a login screen in the browser
 
-## Further help
+1. Log in to your account by entering Email and Password which you have configures in your backed server (rewaa-webserver).
+3. Click on **Inventory** Button to manager inventory
+4. You will fine Add, Edit, View, Modify buttons to manager Products accordingly.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-
+#### There are following third party packages are used in this Projects
+1. bootstrap
+2. angular/material

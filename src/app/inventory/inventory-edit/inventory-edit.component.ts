@@ -54,13 +54,18 @@ export class InventoryEditComponent implements OnInit {
   onSubmit(product) {
     if (this.editMode) {
       this.inventoryService.updateProduct(this.id, product).subscribe( (response) => {
-        console.log("Update Product response ", response);
+        if (response && response['data']['success']) {
+          this.inventoryService.productOperation.next({ type: 'success', message: 'Updated Product Successful'})
+        }
       }, (error) => {
         console.log("Error in create new product", error);
       })
 
     } else {
       this.inventoryService.addProduct(product).subscribe( (response) => {
+        if (response && response['data']['success']) {
+          this.inventoryService.productOperation.next({ type: 'success', message: 'New Product Added Successful'})
+        }
       }, (error) => {
         console.log("Error in create new product", error);
       })

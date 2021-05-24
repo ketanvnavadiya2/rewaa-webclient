@@ -52,6 +52,7 @@ export class AuthenticationService {
   
       if (loadedUser.token) {
         this.user.next(loadedUser);
+        this.router.navigate(['/inventory']);
       }
     }
 

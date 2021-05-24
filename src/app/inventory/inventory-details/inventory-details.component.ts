@@ -23,9 +23,7 @@ export class InventoryDetailsComponent implements OnInit {
       let productId = +params['id'];
 
       this.inventoryService.getProduct(productId).subscribe( (response) => {
-        console.log("Response", response['products'][0]);
         this.product = response['products'][0];
-
       }, (error => {
         console.log("Error", error);
       }))

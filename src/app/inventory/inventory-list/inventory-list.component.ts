@@ -15,6 +15,7 @@ export class InventoryListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'price', 'description', 'action'];
   dataSource;
+  success = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -26,6 +27,15 @@ export class InventoryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+
+    this.inventoryService.productOperation.subscribe( (data) => {
+      if (data.type === 'success') {
+          this.success = data.message;
+          setTimeout( () => {
+            this.success = null;
+          }, 3000)
+      }
+    })
   }
 
   loadData = () => {
@@ -47,8 +57,11 @@ export class InventoryListComponent implements OnInit {
 
   onDeleteProduct = (id) => {
     this.inventoryService.deleteProduct(id).subscribe( (response) => {
-      console.log(" Product Deleted", response);
       this.loadData();
+
+      if (response && response['data']['success']) {
+        this.inventoryService.productOperation.next({ type: 'success', message: 'Delete Product Successful'})
+      }
 
     }, (error) => {
       console.log("Error in Product Deleted", error);
@@ -57,15 +70,13 @@ export class InventoryListComponent implements OnInit {
   }
 
   onEditProduct = (id) => {
-    console.log("Edit ID", id);
     this.router.navigate([id, 'edit'], {relativeTo: this.route});
   }
 
   onViewProduct = (id) => {
-    console.log("View ID", id)
     this.router.navigate([id, 'view'], {relativeTo: this.route});
-
   }
+
 
 
 }
